@@ -22,6 +22,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// conexion a la bbdd
+require('./lib/connectMongoose');
+
 app.use('/', index);
 app.use('/users', users);
 
