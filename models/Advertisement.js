@@ -24,6 +24,14 @@ advertisementSchema.statics.list = function(filter, skip, limit, callback){
 }
 
 
+advertisementSchema.statics.deleteAll = function(callback){
+    Advertisement.remove({}, function (err) {
+        if (err) return callback(err);
+        callback(null);
+    });
+}
+
+
 // crear el modelo
 
 
