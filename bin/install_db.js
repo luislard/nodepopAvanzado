@@ -21,7 +21,7 @@ for (let i = 0; i < data.anuncios.length; i++) {
 
     advertisement.save(function (err,savedAdvertisement) {
         if (err) throw err;
-        console.log('Advertisement '+ savedAdvertisement.name+' created');
+        console.log('Advertisement '+ savedAdvertisement.name+' was created');
     });
 }
 
