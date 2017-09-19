@@ -5,8 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
 
@@ -25,8 +23,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // conexion a la bbdd
 require('./lib/connectMongoose');
 
-app.use('/', index);
-app.use('/users', users);
+/**
+ * lista de routers
+ */
+app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
+app.use('/apiv1/advertisements', require('./routes/apiv1/advertisements'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
