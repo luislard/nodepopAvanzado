@@ -2,7 +2,7 @@
 
 ## Instructions
 
-1. First clone the repo.
+1. Clone the repo.
 2. cd to the repo.
 3. Edit connectMongoose to meet your mongodb port.
 4. Start your mongodb server.
