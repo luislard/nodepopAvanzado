@@ -4,7 +4,7 @@
             "name": "Bicicleta",
             "isSale": true,
             "price": 230.15,
-            "photo": "bici.jpg",
+            "photo": "bici.png",
             "tags": [ "lifestyle", "motor"]
         },
         {

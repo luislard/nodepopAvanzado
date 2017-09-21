@@ -1,6 +1,7 @@
 /* gulpfile.js */
 var gulp = require('gulp');
 var notify = require("gulp-notify");
+var browserify = require("browserify");
 var browserSync = require("browser-sync").create();
 var sourcemaps = require("gulp-sourcemaps");
 var uglify = require("gulp-uglify");
@@ -36,7 +37,7 @@ gulp.task('default', ["img", "js"], function () {
     
 
     // observa cambios en los archivos JS y entonces ejecuta la tarea 'js'
-    gulp.watch(["src/js/*.js"], ["js"]);
+    gulp.watch(["lib/js/*.js"], ["js"]);
 });
 
 gulp.task("js",function(){
