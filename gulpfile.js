@@ -9,6 +9,12 @@ var imagemin = require("gulp-imagemin");
 var tap = require("gulp-tap");
 var buffer = require("gulp-buffer");
 
+// sass
+var sass = require("gulp-sass");
+var postcss = require("gulp-postcss");
+var autoprefixer = require("autoprefixer");
+var cssnano = require("cssnano");
+
 // source and distribution folder
 var
     source = 'lib/',
@@ -27,7 +33,7 @@ var images = {
 
 
 // default task
-gulp.task('default', ["img", "js"], function () {
+gulp.task('default', ["img", "sass", "js"], function () {
     // iniciamos el servidor de desarrollo
     browserSync.init({ 
         // server: "dist/"
@@ -35,9 +41,29 @@ gulp.task('default', ["img", "js"], function () {
 
     });
     
+    // observa cambios en los archivos SASS, y entonces ejecuta la tarea 'sass'
+    gulp.watch(["lib/scss/*.scss", "lib/scss/**/*.scss"], ["sass"]);
 
     // observa cambios en los archivos JS y entonces ejecuta la tarea 'js'
     gulp.watch(["lib/js/*.js"], ["js"]);
+});
+
+
+// compilar sass
+gulp.task("sass", function(){
+    gulp.src("lib/scss/**/*.scss") // cargamos el archivo style.scss
+        .pipe(sourcemaps.init()) // comienza a capturar los sourcemaps
+        .pipe(sass().on("error", function(error){ // lo compilamos con gulp-sass
+            return notify().write(error); // si ocurre un error, mostramos una notificación
+        }))
+        .pipe(postcss([
+            autoprefixer(), // transforma el CSS dándole compatibilidad a versiones antiguas
+            cssnano()       // comprime/minifca el CSS
+        ]))
+        .pipe(sourcemaps.write("./")) // guarda el sourcemap en la misma carpeta que el CSS
+        .pipe(gulp.dest("public/css/")) // guardamos el resultado en la carpeta css
+        .pipe(browserSync.stream()) // recargue el CSS del navegador
+        .pipe(notify("SASS Compilado 🤘🏻")) // muestra notifiación en pantalla
 });
 
 gulp.task("js",function(){
