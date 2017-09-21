@@ -4,7 +4,9 @@ var notify = require("gulp-notify");
 var browserSync = require("browser-sync").create();
 var sourcemaps = require("gulp-sourcemaps");
 var uglify = require("gulp-uglify");
-var imagemin = require("imagemin");
+var imagemin = require("gulp-imagemin");
+var tap = require("gulp-tap");
+var buffer = require("gulp-buffer");
 
 // source and distribution folder
 var
