@@ -4,3 +4,7 @@
 #ignoring mac files
 .DS_Store
 /**/.DS_Store
+
+#ignoring generated files
+/public/images/
+/public/javascripts/
