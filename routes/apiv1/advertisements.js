@@ -20,7 +20,7 @@ const Advertisement = require('../../models/Advertisement');
 router.get('/', function(req, res, next) {
 
     const name = req.query.name;
-    const price = req.query.price;
+    const price = parseInt(req.query.price);
     const isSale = req.query.isSale;
     const skip = parseInt(req.query.skip);
     const limit = parseInt(req.query.limit);
@@ -28,7 +28,8 @@ router.get('/', function(req, res, next) {
     const filter = {};
 
     if (name) {
-        filter.name = name;
+        let regexp = new RegExp("\^"+name ,'i');
+        filter.name = { $regex: regexp };
     }
     if (price) {
         filter.price = price;
