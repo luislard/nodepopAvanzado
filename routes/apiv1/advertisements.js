@@ -23,6 +23,7 @@ router.get('/', function(req, res, next) {
     const minPrice = parseInt(req.query.minPrice);
     const maxPrice = parseInt(req.query.maxPrice);
     const isSale = req.query.isSale;
+    const isWanted = req.query.isWanted;
     const skip = parseInt(req.query.skip);
     const limit = parseInt(req.query.limit);
 
@@ -32,9 +33,13 @@ router.get('/', function(req, res, next) {
         let regexp = new RegExp("\^"+name ,'i');
         filter.name = { $regex: regexp };
     }
-    if (isSale) {
-        filter.isSale = isSale;
+    if (isSale && !isWanted) {
+        filter.isSale = true;
     }
+    if (!isSale && isWanted) {
+        filter.isSale = false;
+    }
+
     if(!isNaN(minPrice) && isNaN(maxPrice)){
         filter.price = { $gte: minPrice };
     }

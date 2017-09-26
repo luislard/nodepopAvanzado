@@ -10,6 +10,42 @@
     <%- include('navbar', {}) %>
     <div class="container">
       
+      <section class="advertisements-form">
+        <div class="row">
+          <h4>Find your articles!</h4>
+          <form action="">
+          
+            <div class="col-sm-12 col-md-6">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="name" class="form-control" id="name" name="name" placeholder="e.g. Bici">
+              </div>
+              <div class="col-md-6">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" name="isSale" checked> On Sale!
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" name="isWanted" checked> Wanted!
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+              <label for="minPrice">Min Price</label>
+              <input type="number" class="form-control" id="minPrice" name="minPrice" placeholder="e.g. 230">
+              <label for="maxPrice">Max Price</label>
+              <input type="number" class="form-control" id="maxPrice" name="maxPrice" placeholder="e.g. 700">
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <button type="submit" class="btn btn-default">Search</button>
+            </div>
+          </form>
+        </div>
+      </section>
       <section class="advertisements-list loading">
         <div class="ui-status empty">
             There is no advertisements
