@@ -17,7 +17,7 @@ const advertisementSchema = mongoose.Schema({
 
 // Añadimos el metodo estático
 advertisementSchema.statics.list = function(filter, skip, limit, callback){
-    console.log(filter);
+    console.log('el pinche filtro', filter);
     const query = Advertisement.find(filter); // aqui todavia no ejecuta la consulta
     query.skip(skip);
     query.limit(limit);

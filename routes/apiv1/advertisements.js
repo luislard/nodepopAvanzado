@@ -20,7 +20,8 @@ const Advertisement = require('../../models/Advertisement');
 router.get('/', function(req, res, next) {
 
     const name = req.query.name;
-    const price = parseInt(req.query.price);
+    const minPrice = parseInt(req.query.minPrice);
+    const maxPrice = parseInt(req.query.maxPrice);
     const isSale = req.query.isSale;
     const skip = parseInt(req.query.skip);
     const limit = parseInt(req.query.limit);
@@ -31,13 +32,18 @@ router.get('/', function(req, res, next) {
         let regexp = new RegExp("\^"+name ,'i');
         filter.name = { $regex: regexp };
     }
-    if (price) {
-        filter.price = price;
-    }
     if (isSale) {
         filter.isSale = isSale;
     }
-    
+    if(!isNaN(minPrice) && isNaN(maxPrice)){
+        filter.price = { $gte: minPrice };
+    }
+    if(isNaN(minPrice) && !isNaN(maxPrice)){
+        filter.price = { $lte: maxPrice };
+    }
+    if(!isNaN(minPrice) && !isNaN(maxPrice)){
+        filter.price = { $lte: maxPrice, $gte: minPrice };
+    }
 
     // recuperar una lista de agentes
     Advertisement.list(filter, skip, limit).then( lista => {
