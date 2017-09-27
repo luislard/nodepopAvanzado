@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // conexion a la bbdd
 require('./lib/connectMongoose');
 require('./models/Advertisement');
+require('./models/Tag');
 
 /**
  * lista de routers
@@ -34,6 +35,7 @@ require('./models/Advertisement');
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/apiv1/advertisements', require('./routes/apiv1/advertisements'));
+app.use('/apiv1/tags', require('./routes/apiv1/tags'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

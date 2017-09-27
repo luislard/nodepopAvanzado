@@ -28,5 +28,19 @@
             "photo": "macbook.png",
             "tags": [ "lifestyle", "work"]
         }
+    ],
+    "tags": [
+        {
+            "name": "Work"
+        },
+        {
+            "name": "Lifestyle"
+        },
+        {
+            "name": "Motor"
+        },
+        {
+            "name": "Mobile"
+        }
     ]
 }

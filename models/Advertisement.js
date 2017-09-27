@@ -8,11 +8,11 @@ const mongoose = require('mongoose');
 
 // definir un programa
 const advertisementSchema = mongoose.Schema({
-    name: String,
-    isSale: Boolean,
-    price: Number,
-    photo: String,
-    tags: [String]
+    name: { type: String, index: true },
+    isSale: { type: Boolean, index: true },
+    price: { type: Number, index: true },
+    photo: { type: String, index: false },
+    tags: { type: [String], index: true }
 });
 
 // Añadimos el metodo estático

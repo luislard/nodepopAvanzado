@@ -14,23 +14,14 @@ const router = express.Router();
 
 // 2da forma de traer el modelo de agente, teniendo el module exports en el modelo
 // importando el modelo 
-const Advertisement = require('../../models/Advertisement');
+const Tag = require('../../models/Tag');
 
 /* GET agentes. */
 router.get('/', function(req, res, next) {
 
     const name = req.query.name;
-    let tags = req.query.tags;
-    const minPrice = parseInt(req.query.minPrice);
-    const maxPrice = parseInt(req.query.maxPrice);
-    const isSale = req.query.isSale;
-    const isWanted = req.query.isWanted;
     const skip = parseInt(req.query.skip);
     const limit = parseInt(req.query.limit);
-    console.log('/*************/');
-    console.log(tags);
-    console.log('/*************/');
-    
 
     const filter = {};
 
@@ -38,34 +29,9 @@ router.get('/', function(req, res, next) {
         let regexp = new RegExp("\^"+name ,'i');
         filter.name = { $regex: regexp };
     }
-    if (isSale && !isWanted) {
-        filter.isSale = true;
-    }
-    if (!isSale && isWanted) {
-        filter.isSale = false;
-    }
-
-    if(tags){
-        
-        if( typeof tags === 'string' ) {
-            tags = [ tags ];
-        }
-
-        filter.tags = { $in: tags };
-    }
-
-    if(!isNaN(minPrice) && isNaN(maxPrice)){
-        filter.price = { $gte: minPrice };
-    }
-    if(isNaN(minPrice) && !isNaN(maxPrice)){
-        filter.price = { $lte: maxPrice };
-    }
-    if(!isNaN(minPrice) && !isNaN(maxPrice)){
-        filter.price = { $lte: maxPrice, $gte: minPrice };
-    }
 
     // recuperar una lista de agentes
-    Advertisement.list(filter, skip, limit).then( lista => {
+    Tag.list(filter, skip, limit).then( lista => {
         res.json({ success: true, rows: lista });
     }).catch( err => {
         console.log('Error', err);
@@ -75,23 +41,23 @@ router.get('/', function(req, res, next) {
 });
 
 
-/* GET advertisement. */
+/* GET tag. */
 router.get('/:id', function(req, res, next) {
     
     const _id = req.params.id;
-    // recuperar un advertisement
-    Advertisement.findOne({_id: _id}, (err, advertisement) => {
+    // recuperar un tag
+    Tag.findOne({_id: _id}, (err, tag) => {
         if(err) {
             console.log('Error', err);
             next(err);
             return;
         }
-        res.json({ success: true, result: advertisement });
+        res.json({ success: true, result: tag });
     });
 });
 /**
  * POST
- * Crear un advertisement
+ * Crear un tag
  */
 router.post('/',(req,res,next)=>{
     console.log('/*************/');
@@ -99,12 +65,12 @@ router.post('/',(req,res,next)=>{
     console.log('/*************/');
     // res.json({});    
 
-    const advertisement = new Advertisement(req.body);
+    const tag = new Tag(req.body);
 
     /**
      * lo guardamos en la base de datos
      */
-    advertisement.save((err,savedAdvertisement)=>{
+    tag.save((err,savedTag)=>{
         if (err) {
             console.log('/*************/');
             console.log('Error', err);
@@ -113,7 +79,7 @@ router.post('/',(req,res,next)=>{
             return
         }
     
-        res.json({success: true, result: savedAdvertisement});
+        res.json({success: true, result: savedTag});
     
     });
 
@@ -123,15 +89,15 @@ router.post('/',(req,res,next)=>{
 
 /**
  * PUT
- * Actualizar un advertisement 
+ * Actualizar un tag 
  */
-router.put('/:advertisementKey',(req,res,next)=>{
-    const _id = req.params.advertisementKey;
+router.put('/:tagKey',(req,res,next)=>{
+    const _id = req.params.tagKey;
 
     /**
      * actualizo con {new:true} para que regrese el recurso actualizado y no el anterior
      */
-    Advertisement.findOneAndUpdate({_id:_id},req.body,{new:true},(err,updatedAdvertisement)=>{
+    Tag.findOneAndUpdate({_id:_id},req.body,{new:true},(err,updatedTag)=>{
         if (err) {
             console.log('/*************/');
             console.log('Error', err);
@@ -139,18 +105,18 @@ router.put('/:advertisementKey',(req,res,next)=>{
             next(err);
             return
         }
-        res.json({ success: true, result: updatedAdvertisement});
+        res.json({ success: true, result: updatedTag});
     });
 });
 
 /**
  * DELETE
- * Borrar el advertisement
+ * Borrar el tag
  */
 router.delete('/:id', (req,res,next)=>{
     
     const _id = req.params.id; 
-    Advertisement.remove({_id: _id },(err)=>{
+    Tag.remove({_id: _id },(err)=>{
         if (err) {
             console.log('/*************/');
             console.log('Error', err);
