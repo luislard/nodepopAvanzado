@@ -20,6 +20,8 @@ const Tag = require('../../models/Tag');
 router.get('/', function(req, res, next) {
 
     const name = req.query.name;
+    const skip = parseInt(req.query.skip);
+    const limit = parseInt(req.query.limit);
 
     const filter = {};
 

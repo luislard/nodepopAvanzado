@@ -16,7 +16,7 @@ const tagSchema = mongoose.Schema({
 
 // Añadimos el metodo estático
 tagSchema.statics.list = function(filter, skip, limit, callback){
-    const query = Advertisement.find(filter); // aqui todavia no ejecuta la consulta
+    const query = Tag.find(filter); // aqui todavia no ejecuta la consulta
     query.skip(skip);
     query.limit(limit);
     return query.exec(callback);
