@@ -20,12 +20,17 @@ const Advertisement = require('../../models/Advertisement');
 router.get('/', function(req, res, next) {
 
     const name = req.query.name;
+    let tags = req.query.tags;
     const minPrice = parseInt(req.query.minPrice);
     const maxPrice = parseInt(req.query.maxPrice);
     const isSale = req.query.isSale;
     const isWanted = req.query.isWanted;
     const skip = parseInt(req.query.skip);
     const limit = parseInt(req.query.limit);
+    console.log('/*************/');
+    console.log(tags);
+    console.log('/*************/');
+    
 
     const filter = {};
 
@@ -38,6 +43,15 @@ router.get('/', function(req, res, next) {
     }
     if (!isSale && isWanted) {
         filter.isSale = false;
+    }
+
+    if(tags){
+        
+        if( typeof tags === 'string' ) {
+            tags = [ tags ];
+        }
+
+        filter.tags = { $in: tags };
     }
 
     if(!isNaN(minPrice) && isNaN(maxPrice)){
