@@ -6,7 +6,7 @@
 require('../lib/connectMongoose');
 
 const Advertisement = require('../models/Advertisement');
-const Tag = require('../models/Advertisement');
+const Tag = require('../models/Tag');
 const data = require('../lib/data.json');
 
 
@@ -37,11 +37,11 @@ console.log(data.tags.length);
 console.log('/*************/');
 
 for (let i = 0; i < data.tags.length; i++) {
-    const tag = new Advertisement(data.tags[i]);
+    const tag = new Tag(data.tags[i]);
 
     tag.save(function (err,savedTag) {
         if (err) throw err;
-        console.log('Advertisement '+ savedTag.name+' was created');
+        console.log('Tag '+ savedTag.name+' was created');
     });
 }
 
