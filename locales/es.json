@@ -1,3 +1,7 @@
 {
-    "HELLO": "Hola"
+	"HELLO": "Hola",
+	"HOME": {
+		"TITLE": "Bienvenido a ..."
+	},
+	"HELLO.TITLE": "HELLO.TITLE"
 }
