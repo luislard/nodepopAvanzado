@@ -5,5 +5,9 @@
 	"HOME": {
 		"TITLE": "Bienvenido a ..."
 	},
-	"The name is name and the age is age": "The name is {{name}} and the age is {{age}}"
+	"The name is name and the age is age": "The name is {{name}} and the age is {{age}}",
+	"Mouse": {
+        "one": "%s Mouse",
+        "other": "%s Mice"
+    }
 }

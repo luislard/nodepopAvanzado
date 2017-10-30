@@ -33,6 +33,7 @@ i18n.configure({
   // objectNotation: true, 
   // register: global // hace que pueda usar el __ en todas las partes de mi aplicacion
 });
+i18n.setLocale('en'); // cuando se usa la traduccion en scripts
 app.use(i18n.init);
 
 // console.log(i18n.__('HELLO'));
@@ -41,9 +42,12 @@ app.use(i18n.init);
 // console.log(i18n.__('HOME.TITLE'));
 
 // console.log(__('The name is name and the age is age'));
-console.log(i18n.__('The name is name and the age is age', {
-  name: 'Luis', age: 32
-}));
+// console.log(i18n.__('The name is name and the age is age', {
+//   name: 'Luis', age: 32
+// }));
+
+console.log(i18n.__n('Mouse', 1));
+console.log(i18n.__n('Mouse', 2));
 
 
 
