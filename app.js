@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const i18n = require('i18n');
 
 var app = express();
 
@@ -14,20 +15,21 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-app.use(function(req,res,next){
-  console.log('hemos recibido una peticion');
-  next();
-});
+// conexion a la bbdd
+require('./lib/connectMongoose');
+require('./models/Advertisement');
+require('./models/Tag');
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// conexion a la bbdd
-require('./lib/connectMongoose');
-require('./models/Advertisement');
-require('./models/Tag');
+i18n.configure({
+  directory: path.join(__dirname, 'locales'),
+  defaultLocale: 'en'
+});
 
 /**
  * lista de routers
