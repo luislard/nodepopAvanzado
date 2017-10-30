@@ -29,14 +29,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 i18n.configure({
   directory: path.join(__dirname, 'locales'),
   defaultLocale: 'en',
-  syncFiles: true
+  syncFiles: true,
+  objectNotation: true
 });
 app.use(i18n.init);
 
 // console.log(i18n.__('HELLO'));
 // console.log(i18n.__({phrase: 'HELLO', locale: 'es'})); //fuerza a usar el locale es
 
-console.log(i18n.__('HELLO.TITLE'));
+console.log(i18n.__('HOME.TITLE'));
 
 /**
  * lista de routers
