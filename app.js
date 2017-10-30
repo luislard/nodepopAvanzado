@@ -30,14 +30,19 @@ i18n.configure({
   directory: path.join(__dirname, 'locales'),
   defaultLocale: 'en',
   syncFiles: true,
-  objectNotation: true
+  objectNotation: true,
+  register: global // hace que pueda usar el __ en todas las partes de mi aplicacion
 });
 app.use(i18n.init);
 
 // console.log(i18n.__('HELLO'));
 // console.log(i18n.__({phrase: 'HELLO', locale: 'es'})); //fuerza a usar el locale es
 
-console.log(i18n.__('HOME.TITLE'));
+// console.log(i18n.__('HOME.TITLE'));
+
+// console.log(__('The name is name and the age is age'));
+
+
 
 /**
  * lista de routers
