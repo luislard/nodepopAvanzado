@@ -30,8 +30,8 @@ i18n.configure({
   directory: path.join(__dirname, 'locales'),
   defaultLocale: 'en',
   syncFiles: true,
-  objectNotation: true,
-  register: global // hace que pueda usar el __ en todas las partes de mi aplicacion
+  // objectNotation: true, 
+  // register: global // hace que pueda usar el __ en todas las partes de mi aplicacion
 });
 app.use(i18n.init);
 
@@ -41,6 +41,9 @@ app.use(i18n.init);
 // console.log(i18n.__('HOME.TITLE'));
 
 // console.log(__('The name is name and the age is age'));
+console.log(i18n.__('The name is name and the age is age', {
+  name: 'Luis', age: 32
+}));
 
 
 
