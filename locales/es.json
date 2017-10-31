@@ -6,5 +6,25 @@
 		"TITLE": "Bienvenido a ..."
 	},
 	"The name is name and the age is age": "The name is name and the age is age",
-	"Mouse": "Mouse"
+	"Mouse": "Mouse",
+	"List all advertisements": "Ver todos los avisos",
+	"Find your articles!": "Encuentra tus artículos!",
+	"Name": "Nombre",
+	"There is no tags": "No hay etiquetas",
+	"Oops... This is embarasing, there has been an error": "Oh... Esto es embarazoso, ha ocurrido un error",
+	"Loading...": "Cargando...",
+	"Skip": "Salto",
+	"e.g. 3": "e.g. 3",
+	"Limit": "Límite",
+	"Min Price": "Precio Mínimo",
+	"Max Price": "Precio Máximo",
+	"On Sale!": "En venta!",
+	"Wanted!": "Deseado!",
+	"Search": "Buscar",
+	"There is no advertisements": "No hay avisos",
+	"Toggle navigation": "Cambiar navegación",
+	"NodePop Avanzado": "NodePop Avanzado",
+	"Lista": "Lista",
+	"LogIn": "Iniciar Sesión",
+	"Submit": "Enviar"
 }

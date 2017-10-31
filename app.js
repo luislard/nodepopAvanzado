@@ -30,8 +30,9 @@ i18n.configure({
   directory: path.join(__dirname, 'locales'),
   defaultLocale: 'en',
   syncFiles: true,
+  queryParameter: 'lang',
   // objectNotation: true, 
-  // register: global // hace que pueda usar el __ en todas las partes de mi aplicacion
+  register: global // hace que pueda usar el __ en todas las partes de mi aplicacion
 });
 i18n.setLocale('en'); // cuando se usa la traduccion en scripts
 app.use(i18n.init);
@@ -46,8 +47,8 @@ app.use(i18n.init);
 //   name: 'Luis', age: 32
 // }));
 
-console.log(i18n.__n('Mouse', 1));
-console.log(i18n.__n('Mouse', 2));
+// console.log(i18n.__n('Mouse', 1));
+// console.log(i18n.__n('Mouse', 2));
 
 
 

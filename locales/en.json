@@ -7,7 +7,27 @@
 	},
 	"The name is name and the age is age": "The name is {{name}} and the age is {{age}}",
 	"Mouse": {
-        "one": "%s Mouse",
-        "other": "%s Mice"
-    }
+		"one": "%s Mouse",
+		"other": "%s Mice"
+	},
+	"List all advertisements": "List all advertisements",
+	"Find your articles!": "Find your articles!",
+	"Name": "Name",
+	"There is no tags": "There is no tags",
+	"Oops... This is embarasing, there has been an error": "Oops... This is embarasing, there has been an error",
+	"Loading...": "Loading...",
+	"Skip": "Skip",
+	"e.g. 3": "e.g. 3",
+	"Limit": "Limit",
+	"Min Price": "Min Price",
+	"Max Price": "Max Price",
+	"On Sale!": "On Sale!",
+	"Wanted!": "Wanted!",
+	"Search": "Search",
+	"There is no advertisements": "There is no advertisements",
+	"Toggle navigation": "Toggle navigation",
+	"NodePop Avanzado": "NodePop Avanzado",
+	"Lista": "Lista",
+	"LogIn": "LogIn",
+	"Submit": "Submit"
 }
