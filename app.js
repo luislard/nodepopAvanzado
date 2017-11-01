@@ -14,20 +14,34 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-app.use(function(req,res,next){
-  console.log('hemos recibido una peticion');
-  next();
-});
+// conexion a la bbdd
+require('./lib/connectMongoose');
+require('./models/Advertisement');
+require('./models/Tag');
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// conexion a la bbdd
-require('./lib/connectMongoose');
-require('./models/Advertisement');
-require('./models/Tag');
+const i18n = require('./lib/i18nConfigure')();
+app.use(i18n.init);
+
+// console.log(i18n.__('HELLO'));
+// console.log(i18n.__({phrase: 'HELLO', locale: 'es'})); //fuerza a usar el locale es
+
+// console.log(i18n.__('HOME.TITLE'));
+
+// console.log(__('The name is name and the age is age'));
+// console.log(i18n.__('The name is name and the age is age', {
+//   name: 'Luis', age: 32
+// }));
+
+// console.log(i18n.__n('Mouse', 1));
+// console.log(i18n.__n('Mouse', 2));
+
+
 
 /**
  * lista de routers
