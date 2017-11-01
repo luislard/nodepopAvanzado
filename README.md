@@ -11,6 +11,9 @@
 7. In another terminal do **nodemon**.
 8. In another terminal do **gulp**.
 
+## Test Examples
+1. **node ./node_modules/.bin/mocha ./e2e/i18n.e2e.js** will run a test using the mocha binary.
+
 ## Instructions to use the API
 
 1. To list all the tags do a **http GET request** to *http://localhost:3000/apiv1/tags*
