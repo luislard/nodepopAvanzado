@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-const i18n = require('i18n');
 
 var app = express();
 
@@ -26,15 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-i18n.configure({
-  directory: path.join(__dirname, 'locales'),
-  defaultLocale: 'en',
-  syncFiles: true,
-  queryParameter: 'lang',
-  // objectNotation: true, 
-  register: global // hace que pueda usar el __ en todas las partes de mi aplicacion
-});
-i18n.setLocale('en'); // cuando se usa la traduccion en scripts
+const i18n = require('./lib/i18nConfigure')();
 app.use(i18n.init);
 
 // console.log(i18n.__('HELLO'));
