@@ -2,7 +2,7 @@
 <html>
   <head>
     <%- include('common-head', {}) %>
-    <title>List all advertisements</title>
+    <title><%= __('List all advertisements') %></title>
     <%- include('common-styles', {}) %>
     <link rel='stylesheet' href='/css/main.css' />
   </head>
@@ -11,58 +11,58 @@
     <div class="container">
       
       <section class="advertisements-form">
-        <h4>Find your articles!</h4>
+        <h4><%= __('Find your articles!') %></h4>
         <form action="" novalidate="novalidate">
           <div class="row">
           
             <div class="col-sm-12 col-md-6">
               <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Bici">
+                <label for="name"><%= __('Name') %></label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="<%= __('e.g.') %> Bici">
               </div>
               <div class="tags-list">
                 <div class="ui-status empty">
-                    There is no tags
+                    <%= __('There is no tags') %>
                 </div>
                 <div class="ui-status error">
-                    Oops... This is embarasing, there has been an error
+                    <%= __('Oops... This is embarasing, there has been an error') %>
                 </div>
                 <div class="ui-status loading">
-                    Loading...
+                    <%= __('Loading...')%>
                 </div>
                 <div class="ui-status ideal"></div>
               </div>
               <div class="form-group">
-                <label for="skip">Skip</label>
-                <input type="number" class="form-control" id="skip" name="skip" placeholder="e.g. 3">
+                <label for="skip"><%= __('Skip') %></label>
+                <input type="number" class="form-control" id="skip" name="skip" placeholder="<%= __('e.g.') %> 3">
               </div>
               <div class="form-group">
-                <label for="limit">Limit</label>
-                <input type="number" class="form-control" id="limit" name="limit" placeholder="e.g. 4">
+                <label for="limit"><%= __('Limit') %></label>
+                <input type="number" class="form-control" id="limit" name="limit" placeholder="<%= __('e.g.') %> 4">
               </div>
             </div>
 
             <div class="col-sm-12 col-md-6">
               <div class="form-group">
-                <label for="minPrice">Min Price</label>
-                <input type="number" class="form-control" id="minPrice" name="minPrice" placeholder="e.g. 230">
+                <label for="minPrice"><%= __('Min Price') %></label>
+                <input type="number" class="form-control" id="minPrice" name="minPrice" placeholder="<%= __('e.g.') %> 230">
               </div>
 
               <div class="form-group">
-                <label for="maxPrice">Max Price</label>
-                <input type="number" class="form-control" id="maxPrice" name="maxPrice" placeholder="e.g. 700">
+                <label for="maxPrice"><%= __('Max Price') %></label>
+                <input type="number" class="form-control" id="maxPrice" name="maxPrice" placeholder="<%= __('e.g.') %> 700">
               </div>
               <div class="col-sm-6">
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="isSale" checked> On Sale!
+                    <input type="checkbox" name="isSale" checked> <%= __('On Sale!') %>
                   </label>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="isWanted" checked> Wanted!
+                    <input type="checkbox" name="isWanted" checked> <%= __('Wanted!') %>
                   </label>
                 </div>
               </div>
@@ -71,20 +71,20 @@
           </div>
           <div class="row">
             <div class="col-sm-12 col-md-6">
-              <button type="submit" class="btn btn-primary" id="search2">Search</button>
+              <button type="submit" class="btn btn-primary" id="search2"><%= __('Search') %></button>
             </div>
           </div>
         </form>
       </section>
       <section class="advertisements-list loading">
         <div class="ui-status empty">
-            There is no advertisements
+            <%= __('There is no advertisements') %>
         </div>
         <div class="ui-status error">
-            Oops... This is embarasing, there has been an error
+            <%= __('Oops... This is embarasing, there has been an error') %>
         </div>
         <div class="ui-status loading">
-            Loading...
+            <%= __('Loading...') %>
         </div>
         <div class="ui-status ideal"></div>
       </section>
