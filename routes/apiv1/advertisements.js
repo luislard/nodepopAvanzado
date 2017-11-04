@@ -27,10 +27,6 @@ router.get('/', function(req, res, next) {
     const isWanted = req.query.isWanted;
     const skip = parseInt(req.query.skip);
     const limit = parseInt(req.query.limit);
-    console.log('/*************/');
-    console.log(tags);
-    console.log('/*************/');
-    
 
     const filter = {};
 
