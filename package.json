@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "install_db": "node ./bin/install_db.js",
-    "e2e": "mocha **/*.e2e.js --recursive --watch --timeout 10000"
+    "e2e": "mocha **/*.e2e.js --recursive --watch --timeout 10000",
+    "start-all":"concurrently --kill-others \"nodemon\" \"gulp\""
   },
   "dependencies": {
     "body-parser": "~1.17.1",
