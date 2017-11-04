@@ -20,6 +20,19 @@ userSchema.statics.deleteAll = function(callback){
     });
 }
 
+userSchema.statics.fixNotHashedPassword = function(userWithNotHasehPassword){
+    
+    const hashedPassword = User.hashPassword(userWithNotHasehPassword.password);
+
+    const userWithHashedPassword = {
+        name: userWithNotHasehPassword.name,
+        email: userWithNotHasehPassword.email,
+        password: hashedPassword
+    };
+
+    return userWithHashedPassword;
+}
+
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;

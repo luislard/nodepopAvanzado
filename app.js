@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+require('dotenv').config();
+
 var app = express();
 
 // view engine setup
@@ -41,14 +43,20 @@ app.use(i18n.init);
 // console.log(i18n.__n('Mouse', 1));
 // console.log(i18n.__n('Mouse', 2));
 
+// usamos las rutas de un controlador
+var loginController = require('./routes/loginController');
 
+// app.get( '/api/authenticate',  loginController.index);
+// app.post('/login',  loginController.post);
+app.post('/api/authenticate',  loginController.postLoginJWT);
+app.get( '/logout', loginController.logout);
 
 /**
  * lista de routers
  */
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
-app.use('/apiv1/advertisements', require('./routes/apiv1/advertisements'));
+app.use('/api/anuncios', require('./routes/apiv1/advertisements'));
 app.use('/apiv1/tags', require('./routes/apiv1/tags'));
 
 // catch 404 and forward to error handler

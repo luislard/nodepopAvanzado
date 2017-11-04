@@ -16,7 +16,7 @@ const router = express.Router();
 // importando el modelo 
 const Advertisement = require('../../models/Advertisement');
 
-/* GET agentes. */
+/* GET advertisements. */
 router.get('/', function(req, res, next) {
 
     const name = req.query.name;

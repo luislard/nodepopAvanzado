@@ -14,6 +14,8 @@ const app = require('../app');
 
 describe('***** Advertisement API TESTs *****', function(){
 
+    var mainAdvertisementUrl = '/api/anuncios/';
+
     before(async function(){ //
         await mockgoose.prepareStorage();
         await mongoose.connect('mongodb://example.com/TestingDb', {
@@ -33,18 +35,18 @@ describe('***** Advertisement API TESTs *****', function(){
 
     it('should return 200', function(done){
         request(app)
-        .get('/apiv1/advertisements')
+        .get(mainAdvertisementUrl)
         .expect(200, done)
     });
     it('should return json response', function(done){
         request(app)
-        .get('/apiv1/advertisements')
+        .get(mainAdvertisementUrl)
         .expect('Content-Type', /json/)
         .expect(200, done);
     });
     it('should return json response with the property success', function(done){
         request(app)
-        .get('/apiv1/advertisements')
+        .get(mainAdvertisementUrl)
         .expect('Content-Type', /json/)
         .end(function(err, res) {
             res.body.should.have.property('success');
@@ -53,7 +55,7 @@ describe('***** Advertisement API TESTs *****', function(){
     });
     it('should return json response with the property success equal to true', function(done){
         request(app)
-        .get('/apiv1/advertisements')
+        .get(mainAdvertisementUrl)
         .expect('Content-Type', /json/)
         .end(function(err, res) {
             res.body.should.have.property('success', true);
@@ -62,7 +64,7 @@ describe('***** Advertisement API TESTs *****', function(){
     });
     it('should return json with property rows and 4 objects', function(done){
         request(app)
-        .get('/apiv1/advertisements')
+        .get(mainAdvertisementUrl)
         .expect('Content-Type', /json/)
         .end(function(err, res) {
             res.body.rows.length.should.equal(4);
@@ -71,7 +73,7 @@ describe('***** Advertisement API TESTs *****', function(){
     });
     it('should return json with property rows and 1 objects', function(done){
         request(app)
-        .get('/apiv1/advertisements?name=bici')
+        .get(mainAdvertisementUrl+'?name=bici')
         .expect('Content-Type', /json/)
         .end(function(err, res) {
             res.body.rows.length.should.equal(1);
@@ -80,7 +82,7 @@ describe('***** Advertisement API TESTs *****', function(){
     });
     it('should return json with property rows and 1 objects', function(done){
         request(app)
-        .get('/apiv1/advertisements?name=bici')
+        .get(mainAdvertisementUrl+'?name=bici')
         .expect('Content-Type', /json/)
         .end(function(err, res) {
             res.body.rows.length.should.equal(1);
