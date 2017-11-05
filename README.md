@@ -7,13 +7,20 @@
 3. Edit connectMongoose to meet your mongodb port.
 4. Start your mongodb server. In my case, in home folder **mongod --dbpath data/db --directoryperdb**.
 5. Do **npm install**.
-6. In another terminal do **npm run install_db** to install some advertisements objects in your db.
-7. In another terminal do **nodemon**.
-8. In another terminal do **gulp**.
-9. To run e2e tests do **npm run e2e**.
+6. In another terminal do **npm run start-all** to install some advertisements objects in your db and run de server and gulp.
+7. To run e2e tests do **npm run e2e**.
 
-## Test Examples
-1. **node ./node_modules/.bin/mocha ./e2e/i18n.e2e.js** will run a test using the mocha binary.
+## How to use the app.
+1. Wait until gulp finish loading the files.
+2. Go to localhost:3001.
+3. You will not see advertisements because you need to login.
+4. On the menu, go to Log In.
+5. The password is **1234**.
+6. Now you can see some advertisements.
+7. To create one go to create using the navigation menu.
+8. Fill all the fields and upload a file.
+9. Click on create.
+10. you should see the new advertisement.
 
 ## Instructions to use the API
 
