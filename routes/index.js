@@ -4,6 +4,7 @@ const i18n = require('i18n');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  console.log(req.userId);
   res.render('index', { title: 'Express' });
 });
 
