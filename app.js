@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+const jwtAuth = require('./lib/jwtAuth');
+
 require('dotenv').config();
 
 var app = express();
@@ -46,9 +48,9 @@ app.use(i18n.init);
 // usamos las rutas de un controlador
 var loginController = require('./routes/loginController');
 
-// app.get( '/api/authenticate',  loginController.index);
-// app.post('/login',  loginController.post);
-app.post('/api/authenticate',  loginController.postLoginJWT);
+app.get( '/login',  loginController.index);
+app.post('/login',  loginController.post);
+app.post('/api/authenticate', loginController.postLoginJWT);
 app.get( '/logout', loginController.logout);
 
 /**
@@ -56,7 +58,7 @@ app.get( '/logout', loginController.logout);
  */
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
-app.use('/api/anuncios', require('./routes/apiv1/advertisements'));
+app.use('/api/anuncios', jwtAuth(), require('./routes/apiv1/advertisements'));
 app.use('/apiv1/tags', require('./routes/apiv1/tags'));
 
 // catch 404 and forward to error handler
