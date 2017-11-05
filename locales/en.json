@@ -33,5 +33,11 @@
 	"e.g.": "e.g.",
 	"Log In": "Log In",
 	"Email address": "Email address",
-	"Invalid credentials": "Invalid credentials"
+	"Invalid credentials": "Invalid credentials",
+	"Create": "Create",
+	"List": "List",
+	"Create advertisement": "Create advertisement",
+	"Create an Advertisement!": "Create an Advertisement!",
+	"Price": "Price",
+	"Photo": "Photo"
 }

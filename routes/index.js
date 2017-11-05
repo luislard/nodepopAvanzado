@@ -4,8 +4,12 @@ const i18n = require('i18n');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(req.userId);
   res.render('index', { title: 'Express' });
+});
+
+/* GET create page. */
+router.get('/create', function(req, res, next) {
+  res.render('create');
 });
 
 router.get('/lang/:locale', function(req, res, next) {
