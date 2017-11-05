@@ -62,7 +62,7 @@ router.get('/', function(req, res, next) {
 
     // recuperar una lista de agentes
     Advertisement.list(filter, skip, limit).then( lista => {
-        res.json({ success: true, rows: lista });
+        res.json({ ok: true, rows: lista });
     }).catch( err => {
         console.log('Error', err);
         next(err);

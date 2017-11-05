@@ -25,7 +25,9 @@ describe('***** Advertisement API TESTs *****', function(){
         mongoose.models = {};
         mongoose.modelSchemas = {};
         await mongodbFixtures.initAdvertisements();
-        
+        await mongodbFixtures.initUsers();
+        var token = await mongodbFixtures.token();
+        console.log('aqui deberia estar el token', token);
     });
 
     // despues de cada test
@@ -44,12 +46,12 @@ describe('***** Advertisement API TESTs *****', function(){
         .expect('Content-Type', /json/)
         .expect(200, done);
     });
-    it('should return json response with the property success', function(done){
+    it('should return json response with the property ok', function(done){
         request(app)
         .get(mainAdvertisementUrl)
         .expect('Content-Type', /json/)
         .end(function(err, res) {
-            res.body.should.have.property('success');
+            res.body.should.have.property('ok');
         done();
       });
     });
