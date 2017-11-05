@@ -72,7 +72,7 @@ class LoginController {
     
     // creamos el token
     jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '5m'
+      expiresIn: '2d'
     }, (err, token) => {
       if (err) {
         return next(err);
