@@ -29,6 +29,12 @@
 	"Submit": "Enviar",
 	"e.g.": "ej.",
 	"Log In": "Log In",
-	"Email address": "Email address",
-	"Invalid credentials": "Invalid credentials"
+	"Email address": "Correo Electrónico",
+	"Invalid credentials": "Credenciales inválidas",
+	"Create": "Crear",
+	"List": "Lista",
+	"Create advertisement": "Crea un anuncio",
+	"Create an Advertisement!": "Crea un anuncio!",
+	"Price": "Precio",
+	"Photo": "Foto"
 }

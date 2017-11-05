@@ -23,34 +23,34 @@ module.exports.initUsers = async function(){
     await populateUsers(data);
 }
 
-// module.exports.token = async function(){
-//     const email = 'user@example.com';
-//     const password = '1234';
+module.exports.token = async function(){
+    const email = 'user@example.com';
+    const password = '1234';
 
-//     // hacemos un hash de la password
-//     const hashedPassword = User.hashPassword(password);
+    // hacemos un hash de la password
+    const hashedPassword = User.hashPassword(password);
 
-//     const user = await User.findOne({ email: email, password: hashedPassword });
+    const user = await User.findOne({ email: email, password: hashedPassword });
 
-//     if (!user) {
-//         // Respondemos que no son validas las credenciales
-//         return {ok: false, error: 'invalid credentials'};
-//     }
+    if (!user) {
+        // Respondemos que no son validas las credenciales
+        return {ok: false, error: 'invalid credentials'};
+    }
 
-//     // el usuario está y coincide la password
+    // el usuario está y coincide la password
     
-//     // creamos el token
-//     jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-//         expiresIn: '5m'
-//         }, (err, token) => {
-//         if (err) {
-//             return {ok: false, error: 'error on token creation'};
-//         }
-//         // respondemos con un JWT
-//         return {ok: true, token: token};
+    // creamos el token
+    jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: '5m'
+        }, (err, token) => {
+        if (err) {
+            return {ok: false, error: 'error on token creation'};
+        }
+        // respondemos con un JWT
+        return {ok: true, token: token};
 
-//     });
-// }
+    });
+}
 
 function populateUsers(data){
     for (let i = 0; i < data.users.length; i++) {
