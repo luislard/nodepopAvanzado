@@ -7,6 +7,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+/* GET create page. */
+router.get('/create', function(req, res, next) {
+  res.render('create');
+});
+
 router.get('/lang/:locale', function(req, res, next) {
   
   const locale = req.params.locale;

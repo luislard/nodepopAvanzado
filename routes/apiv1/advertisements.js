@@ -5,6 +5,11 @@
 
 const express = require('express');
 const router = express.Router();
+var multer  = require('multer');
+var upload = multer({ dest: 'public/images' });
+var Jimp = require("jimp");
+const path = require('path');
+
 
 // Le pedimos a mongoose que nos de el modelo de agente
 
@@ -16,7 +21,7 @@ const router = express.Router();
 // importando el modelo 
 const Advertisement = require('../../models/Advertisement');
 
-/* GET agentes. */
+/* GET advertisements. */
 router.get('/', function(req, res, next) {
 
     const name = req.query.name;
@@ -27,10 +32,6 @@ router.get('/', function(req, res, next) {
     const isWanted = req.query.isWanted;
     const skip = parseInt(req.query.skip);
     const limit = parseInt(req.query.limit);
-    console.log('/*************/');
-    console.log(tags);
-    console.log('/*************/');
-    
 
     const filter = {};
 
@@ -66,7 +67,7 @@ router.get('/', function(req, res, next) {
 
     // recuperar una lista de agentes
     Advertisement.list(filter, skip, limit).then( lista => {
-        res.json({ success: true, rows: lista });
+        res.json({ ok: true, rows: lista });
     }).catch( err => {
         console.log('Error', err);
         next(err);
@@ -93,14 +94,29 @@ router.get('/:id', function(req, res, next) {
  * POST
  * Crear un advertisement
  */
-router.post('/',(req,res,next)=>{
+router.post('/', upload.single('photo'), (req,res,next)=>{
     console.log('/*************/');
+    console.log(req.file);
     console.log(req.body);
     console.log('/*************/');
-    // res.json({});    
+    // res.json({});
+    
+    // open a file called "lenna.png"
+    // Jimp.read('/Users/luisrosales/Documents/projects/keepcoding/backend-avanzado/nodepopAvanzado/public/images/'+req.file.filename, function (err, file) {
+    Jimp.read(path.normalize(__dirname+'/../..') +'/public/images/'+req.file.filename, function (err, file) {
+        if (err) throw err;
+        file.resize(100, 100)            // resize
+            .quality(80)                 // set JPEG quality
+            .write(path.normalize(__dirname+'/../..') +'/public/images/'+ req.file.filename+"-small-100x100.jpg"); // save
+    });
 
-    const advertisement = new Advertisement(req.body);
+    const advertisement = new Advertisement();
 
+    advertisement.name = req.body.name;
+    advertisement.isSale = req.body.isSale;
+    advertisement.price = req.body.price;
+    advertisement.photo = req.file.filename+"-small-100x100.jpg";
+    advertisement.tags = req.body.tags.split(",");
     /**
      * lo guardamos en la base de datos
      */
@@ -113,11 +129,11 @@ router.post('/',(req,res,next)=>{
             return
         }
     
-        res.json({success: true, result: savedAdvertisement});
+        res.json({ok: true, result: savedAdvertisement});
     
     });
 
-
+    // res.json(req.body);
 
 });
 

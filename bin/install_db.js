@@ -7,6 +7,7 @@ require('../lib/connectMongoose');
 
 const Advertisement = require('../models/Advertisement');
 const Tag = require('../models/Tag');
+const User = require('../models/User');
 var data = require('../lib/data.json');
 
 
@@ -40,6 +41,24 @@ function populateTags(data) {
         tag.save(function (err,savedTag) {
             if (err) throw err;
             console.log('Tag '+ savedTag.name+' was created');
+        });
+    }
+}
+
+User.deleteAll(()=>{
+    console.log('Borramos todos los users existentes.');
+    populateUsers(data);
+});
+
+function populateUsers(data) {
+    for (let i = 0; i < data.users.length; i++) {
+        console.log(data.users[i].password);
+        data.users[i].password = User.hashPassword(data.users[i].password);
+
+        let user = new User(data.users[i]);
+        user.save(function (err,savedUser) {
+            if (err) throw err;
+            console.log('User '+ savedUser.name+' was created');
         });
     }
 }

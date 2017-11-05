@@ -10,6 +10,10 @@
 6. In another terminal do **npm run install_db** to install some advertisements objects in your db.
 7. In another terminal do **nodemon**.
 8. In another terminal do **gulp**.
+9. To run e2e tests do **npm run e2e**.
+
+## Test Examples
+1. **node ./node_modules/.bin/mocha ./e2e/i18n.e2e.js** will run a test using the mocha binary.
 
 ## Instructions to use the API
 
